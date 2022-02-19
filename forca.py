@@ -1,10 +1,10 @@
 import random as rnd
-import util as utl
+import util
 import json
 
 
 def jogar():
-    utl.cabecalho_jogo("forca")
+    util.cabecalho_jogo("forca")
     palavra_secreta = define_palavra_secreta()
     acertou = False
     enforcou = False

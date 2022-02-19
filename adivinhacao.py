@@ -1,12 +1,12 @@
 import random as rnd
+import util
+
 
 def jogar():
     numero_secreto = rnd.randrange(1, 101)
     pontos = 1000
 
-    print("*"*33)
-    print("Bem vindo ao jogo de adivinhação!")
-    print("*"*33)
+    util.cabecalho_jogo("adivinhação")
 
     print("Qual o nível de dificuldade?")
     while True:
