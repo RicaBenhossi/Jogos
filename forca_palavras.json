@@ -1,0 +1,22 @@
+{
+  "Frutas": [
+   "banana",
+    "maça",
+    "morango",
+    "melancia",
+    "goiaba",
+    "mamão",
+    "melão"
+  ],
+  "Cidades": [
+    "São Paulo",
+    "Jundiaí",
+    "Montreal",
+    "Nova York"
+  ],
+  "Personagens": [
+    "Sherlock Holmes",
+    "Jack Sparrow",
+    "Hanibbal Lecter"
+  ]
+}
