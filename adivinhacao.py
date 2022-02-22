@@ -3,39 +3,16 @@ import util
 
 
 def jogar():
+    util.cabecalho_jogo("adivinhação")
+    maximo_de_tentativas = util.seleciona_qtd_tentativas()
+
     numero_secreto = rnd.randrange(1, 101)
     pontos = 1000
 
-    util.cabecalho_jogo("adivinhação")
-
-    print("Qual o nível de dificuldade?")
-    while True:
-        print("(1) Fácil | (2) Médio | (3) Difícil | (0) Sair")
-
-        nivel = int(input("Nível escolhido: "))
-        if (not (nivel in range(0, 4))):
-            print("Seleciona um nível válido.")
-        elif (nivel == 0):
-            print("Até a próxima!")
-            exit()
-        else:
-            break
-
-    if (nivel == 1):
-        maximo_de_tentativas = 10
-    elif (nivel == 2):
-        maximo_de_tentativas = 6
-    else:
-        maximo_de_tentativas = 3
-
     print(f"Você tem {maximo_de_tentativas} chances. Boa sorte!")
-
     for rodada_atual in range(1, maximo_de_tentativas + 1):
         print(f"Rodada {rodada_atual} de {maximo_de_tentativas}.")
-        chute = int(input("\ndigite o seu palpite (número entre 1 e 100)."))
-        if (chute < 1 or chute > 100):
-            print('Palpite inválido. Você deve digitar um números entre 1 e 100')
-            continue
+        chute = get_chute_valido()
 
         print(f"Seu chute foi {chute}.")
 
@@ -44,9 +21,10 @@ def jogar():
 
         if(acertou):
             print("Você acertou :)")
-            print(f"Pontuação: {pontos}")
+            print(f"Seu score foi de: {pontos}")
             break
         else:
+            print('-' * 120)
             print("Você errou :(")
             print(f"Seu chute foi {('maior' if chute_maior else 'menor')} que o número secreto")
             pontos_perdidos = abs(numero_secreto - chute)
@@ -56,6 +34,26 @@ def jogar():
             print("Você perdeu!!!")
 
     print("FIM DO JOGO.")
+
+
+def get_chute_valido() -> int:
+    while True:
+        chute_lido = input("\ndigite o seu palpite (número entre 1 e 100): ")
+        if (not chute_lido):
+            print("Você deve digitar um números entre 1 e 100.")
+            continue
+        try:
+            chute = int(chute_lido.strip()[0])
+        except Exception:
+            print("Palpite inválido. Você deve digitar um números entre 1 e 100.")
+            continue
+
+        if (not (1 <= chute <= 100)):
+            print("Palpite inválido. Você deve digitar um números entre 1 e 100.")
+            continue
+        else:
+            return chute
+
 
 if (__name__ == "__main__"):
     jogar()
