@@ -3,6 +3,7 @@ def cabecalho_jogo(nome_jogo: str):
     print(f"Bem vindo ao jogo {nome_jogo.upper()}!")
     print("*" * 33)
 
+
 def seleciona_qtd_tentativas() -> str:
     print("Qual o nível de dificuldade?")
     while True:
